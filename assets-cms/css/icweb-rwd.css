@@ -1,0 +1,186 @@
+/* ------------------- MEDIA QUERIES ------------------- */
+
+
+/* Fix Framwork Navigation and Sidebar */
+
+@media (max-width: 768px) {
+    .navbar-header .navbar-nav.visible-xs-block>li>a {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .navbar-header .navbar-nav.visible-xs-block>li.dropdown-user {
+        margin-top: 3px;
+    }
+    .navbar-nav .dropdown .dropdown-toggle {
+        display: none;
+    }
+    .navbar-nav .dropdown {
+        display: none;
+    }
+    .navbar-nav .dropdown.in {
+        display: block;
+    }
+    .navbar-nav .dropdown-menu>li>a:hover,
+    .navbar-nav .dropdown-menu>li>a:focus {
+        color: #fff;
+        background: #1c1c1c;
+    }
+    .navbar-nav .dropdown .dropdown-menu,
+    .navbar-nav .dropdown .dropdown-menu {
+        position: static;
+        float: none;
+        width: auto;
+        margin-top: 0;
+        background-color: transparent;
+        border: 0;
+        box-shadow: none;
+        display: block;
+        color: #fff;
+    }
+    .navbar-inverse .navbar-nav .dropdown-menu>li>a {
+        color: #fff;
+    }
+    .navbar-inverse .navbar-nav .dropdown-menu .divider {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .navbar-inverse .navbar-nav .badge.bg-warning-400,
+    .navbar-inverse .navbar-nav .badge.bg-warning-400:hover,
+    .navbar-inverse .navbar-nav .badgebg-warning-400:focus {
+        background-color: #FF7043;
+        border-color: #FF7043;
+        color: #fff;
+        position: absolute;
+    }
+    .navbar-nav>li>a {
+        padding: 12px 20px;
+    }
+    .navbar-nav>.dropdown-user>a,
+    .navbar-nav>.dropdown-user>a>span {
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+    .navbar .btn-group .dropdown-menu>li>a,
+    .navbar .dropdown .dropdown-menu>li>a,
+    .navbar .input-group .dropdown-menu>li>a {
+        padding: 10px 30px;
+    }
+}
+
+@media (min-width: 769px) {
+    .sidebar-xs .sidebar-main .navigation>li>a>span {
+        background: #000000;
+        border: 1px solid #000000;
+    }
+    .sidebar-xs .sidebar-main .navigation>li>ul {
+        background: #212121;
+        border: 0;
+    }
+    .navbar-nav {
+        margin: 0px;
+    }
+    .navbar-nav>li {
+        padding: 12px 0;
+    }
+    .sidebar-xs .sidebar-main .navigation>li>a>span {
+        padding: 12px 20px;
+    }
+    .sidebar-xs .sidebar-main .navigation>li>ul {
+        top: 46px;
+    }
+    .sidebar-xs .sidebar-main .navigation>li>ul>li>ul>li>a {
+        padding-left: 40px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .navbar-collapse ul.navbar-nav:first-child {
+        position: absolute;
+        right: 158px;
+    }
+    .navbar-collapse ul.navbar-nav:first-child>li:first-child {
+        display: none;
+    }
+    .navbar-collapse ul.navbar-nav:first-child .dropdown-menu {
+        right: 0;
+        left: auto;
+    }
+}
+
+
+/* Style in Conent */
+
+
+/*
+@media (max-width: 767px) {
+  .table-responsive .dropdown-menu,
+  .table-responsive .dropdown-toggle {
+        position: static !important;
+  }
+}
+*/
+
+@media (min-width: 769px) {
+    .table-responsive>.tasks-list {
+        overflow: visible;
+    }
+}
+
+@media (max-width: 768px) {
+    /* btn */
+    .btn-rounded-xs {
+        min-width: inherit;
+        width: auto;
+        padding: 6px 8px;
+    }
+    .btn-rounded-xs i,
+    .btn-left-xs i {
+        margin: 0;
+    }
+    /* Content Style */
+    .text-center-xs {
+        text-align: center;
+    }
+    .text-left-xs {
+        text-align: left;
+    }
+    .text-right-xs {
+        text-align: right;
+    }
+    .table-responsive>.table-bordered {
+        border: 1px solid #ddd;
+    }
+    /* =================== */
+    /* Add Page & Detail Page */
+    .sort-multiple .input-group {
+        display: block;
+    }
+    .sort-multiple .sort-by .multi-select-full {
+        margin-top: 15px;
+    }
+    .content-group>.panel-flat .button-right.top-topic {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* =================== */
+    /* Add Page & Detail Page */
+    .list-reorder-inside .head .enclosure,
+    .list-reorder-inside .list .enclosure {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading-topic .use-img-thai {
+        width: 100%;
+    }
+    .heading-topic .use-img-thai .checkbox{
+        float: right;
+    }
+    /* =================== */
+    /* Gallery */
+    .content-group.gallery .thumbnail img {
+        height: 130px;
+    }
+}

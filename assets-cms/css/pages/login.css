@@ -1,0 +1,178 @@
+/* Login Page */
+
+
+/* ===================== */
+
+.login-container {
+    background: #fff;
+    font-size: 15px;
+}
+
+.login-container .page-container,
+.login-container .page-content,
+.login-container .content-wrapper {
+    display: block;
+}
+
+.login-container .page-container {
+    padding: 0;
+}
+
+.login-container .content {
+    margin: 0 auto;
+    width: 460px;
+    padding: 0;
+    float: none;
+}
+
+.login-container .page-container .login-form {
+    margin: 130px auto 0;
+    padding: 30px 10% 50px;
+    width: 100%;
+}
+
+.login-container .logo {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-container .form-group {
+    margin-bottom: 10px;
+}
+
+.login-container .form-control {
+    height: 44px;
+    border: 1px solid #9da3a6;
+    font-size: 15px;
+}
+
+.login-container .forget-password>p {
+    margin: 8px 0;
+    text-align: right;
+}
+
+.login-container .btn-login {
+    width: 100%;
+    text-align: center;
+    height: 36px;
+    color: #fff;
+    background: #0036b2;
+    border: 1px solid #0036b2;
+    border-radius: 3px;
+    min-height: 44px;
+    margin: 20px 0 5px 0;
+}
+
+.login-container .term-privacy {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+
+.login-container .term-privacy li {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+}
+
+.login-container .term-privacy li:first-child:after {
+    content: "|";
+    display: inline-block;
+    position: relative;
+    right: -12px;
+}
+
+.login-container .bc-login-b {
+    font-size: 12px;
+    text-align: center;
+}
+
+.login-container .listed-agency a {
+    color: #b2b2b2;
+}
+
+.login-container .listed-agency a:hover {
+    color: #0036b2;
+}
+
+.login-container .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 11px;
+    padding-top: 14px;
+}
+
+.login-container .footer a{
+    color: #666;
+}
+
+.login-container .footer a:hover{
+    text-decoration: underline;
+}
+
+.login-container .footer .legalFooter {
+    text-align: center;
+    padding: 14px;
+    background-color: #F7F9FA;
+}
+
+.login-container .footerGroupWithSiblings {
+    float: left;
+    padding: 0;
+    background: 0 0;
+    margin: 0;
+}
+
+.login-container .footerGroup li {
+    display: inline-block;
+    margin: 0 10px 0 0;
+}
+
+.login-container .footerCopyright {
+    margin: 0;
+    text-align: right;
+    color: #9e9e9e;
+}
+
+.login-container .footerDisclaimer {
+    margin: 0;
+    padding: 7px 0 0;
+    clear: both;
+    color: #9e9e9e;
+    text-align: left;
+}
+
+@media (max-width: 767px) {
+    .login-container .content {
+        width: 100%;
+    }
+    .login-container .page-container .login-form {
+        margin-top: 30px;
+        padding: 0 8% 30px;
+        width: 100%;
+    }
+    .login-container .footerGroupWithSiblings {
+        margin-bottom: 7px;
+        float: none;
+    }
+    .login-container .footerGroupWithSiblings,
+    .login-container .footerCopyright {
+        text-align: left;
+    }
+    .login-container .footerDisclaimer {
+        margin-top: 7px;
+        padding: 0;
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container .form-group div[class*="col-sm-"]:not(.control-label)+div[class*="col-sm-"] {
+        margin-top: 0;
+    }
+}
