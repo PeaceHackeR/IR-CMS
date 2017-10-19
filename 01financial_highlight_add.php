@@ -104,6 +104,7 @@
                                             <button type="button" class="btn btn-cancel">Cancel</button>
                                             <button type="button" class="btn btn-topic-save">Save</button>
                                         </div>
+<!--
                                         <div class="row">
                                             <div class="col-sm-6 col-xs-12">
                                                 <div class="form-group">
@@ -112,6 +113,7 @@
                                                 </div>
                                             </div>
                                         </div>
+-->
                                         <div class="form-group">
                                             <label>Data Table</label>
                                             <div class="summernote-no-img">
@@ -132,25 +134,34 @@
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td>Asset</td>
-                                                                <td class="text-right">8,776.81</td>
-                                                                <td class="text-right">13,082.80</td>
-                                                                <td class="text-right">24,425.58</td>
+                                                                <td>
+                                                                    รายได้รวม
+                                                                    <div class="text-muted text-size-small">หน่วย: พันล้านบาท</div>
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    00.00
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    00.00
+                                                                </td>
+                                                                <td class="text-right">
+                                                                    00.00
+                                                                </td>
                                                                 <td class="text-center"><div class="button-link"><i class="icon-btn-remove"></i></div></td>
                                                             </tr>
                                                             <tr>
                                                                 <td>%YoY</td>
-                                                                <td>&nbsp;</td>
-                                                                <td>&nbsp;</td>
-                                                                <td>&nbsp;</td>
-                                                                <td>&nbsp;</td>
+                                                                <td class="text-right">0%</td>
+                                                                <td class="text-right">0%</td>
+                                                                <td class="text-right">0%</td>
+                                                                <td class="text-right">&nbsp;</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>%QoQ</td>
-                                                                <td>&nbsp;</td>
-                                                                <td>&nbsp;</td>
-                                                                <td>&nbsp;</td>
-                                                                <td>&nbsp;</td>
+                                                                <td class="text-right">0%</td>
+                                                                <td class="text-right">0%</td>
+                                                                <td class="text-right">0%</td>
+                                                                <td class="text-right">&nbsp;</td>
                                                             </tr>
                                                         </tbody>
                                                     </table>

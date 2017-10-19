@@ -870,7 +870,7 @@ table.tasks-list .td-status{
     margin: 0px 10px 10px 0;
 }
 
-.content-group > .panel-flat .button-right.top-topic{
+.content-group .panel-flat .button-right.top-topic{
     margin-bottom: -15px;
     text-align: right;
     position: relative;
@@ -1042,7 +1042,7 @@ table.tasks-list .td-status{
 .bc-file-upload {
     position: relative;
 }
-
+.bc-file-upload .btn { border-radius: 0;}
 .bc-file-upload ul.import-file {
     position: absolute;
     right: 0;
@@ -1054,6 +1054,22 @@ table.tasks-list .td-status{
     float: left;
     margin: 0;
     padding: 0;
+}
+.bc-file-upload ul.import-file li:first-child .btn {
+    border-radius: 0;
+}
+.bc-file-upload ul.import-file li:nth-child(2n) .btn { 
+    border-radius: 0;
+    border-left: 0; 
+    border-right: 0;
+}
+.bc-file-upload ul.import-file li:last-child .btn {
+    -webkit-border-top-right-radius: 3px;
+    -webkit-border-bottom-right-radius: 3px;
+    -moz-border-radius-topright: 3px;
+    -moz-border-radius-bottomright: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
 }
 
 /* Intro Page & Banner Highlight & Popup Banner */
@@ -1213,3 +1229,4 @@ table.tasks-list .td-status{
     color: #999;
 }
 
+.btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group { margin-left:-2px;}

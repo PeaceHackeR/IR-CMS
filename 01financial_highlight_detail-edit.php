@@ -95,10 +95,6 @@
                                             <button type="button" class="btn btn-view-edit">Edit</button>
                                         </div>
                                         <div class="form-group">
-                                            <label>Unit</label>
-                                            <p>M.Baht</p>
-                                        </div>
-                                        <div class="form-group">
                                             <label>Data Table</label>
                                             <div class="table-responsive">
                                                 <table class="table table-bordered table-inside-detail" width="100%">
@@ -112,7 +108,9 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td>Asset</td>
+                                                            <td>รายได้รวม
+                                                                <div class="text-muted text-size-small">หน่วย: พันล้านบาท</div>
+                                                            </td>
                                                             <td class="text-right">8,776.81</td>
                                                             <td class="text-right">13,082.80</td>
                                                             <td class="text-right">24,425.58</td>

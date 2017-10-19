@@ -7,6 +7,7 @@
             <li><a href="#"><i class="icon-action-edit"></i> Edit</a></li>
             <li><a href="#"><i class="icon-action-yes"></i> Publish</a></li>
             <li><a href="#"><i class="icon-action-no"></i> Unpublish</a></li>
+            <li><a href="#"><i class="icon-copy4"></i> Duplicate to Eng</a></li>
             <li><a href="#"><i class="icon-action-delete"></i> Delete</a></li>
         </ul>
     </li>

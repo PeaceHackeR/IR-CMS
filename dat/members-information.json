@@ -1,0 +1,21 @@
+{
+    "results": {
+        "data": {
+            "fullname": "Mr. Tommy Taechaubol",
+            "departments": [
+                {
+                    "name": "Board of Directors",
+                    "position": "Chairman of the Board of Directors, Chairman of Nomination and Remuneration Committee"
+                }, {
+                    "name": "Independent Director",
+                    "position": "Chairman of Nomination and Remuneration Committee"
+                }
+            ]
+        },
+        "commits": {
+            "author": "Noname",
+            "author_id": "2434565",
+            "datetime": "2017-10-17 16:38:25"
+        }
+    }
+}
