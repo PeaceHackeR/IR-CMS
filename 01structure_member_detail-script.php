@@ -28,7 +28,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
 -->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="assets-cms/js/core/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4/lodash.min.js"></script>
 </head>
@@ -114,7 +114,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="last-modified"><strong>Last Modified</strong> {{page.datetime}} - by <a href="#{{refid}}">{{page.author}}</a></p>
+                                    <p class="last-modified"><strong>Last Modified</strong> {{page.datetime}} - by <a v-bind:href="'#'+page.authorId">{{page.author}}</a></p>
                                 </div>
                                 <div class="fx-mode-edit">
                                     <div class="panel panel-flat">
@@ -128,30 +128,30 @@
                                                     <div class="col-sm-6 col-xs-12">
                                                         <div class="form-group">
                                                             <label>Full Name</label>
-                                                            <input type="text" class="form-control" name="fullname" :value="model.fullname" required>
+                                                            <input type="text" class="form-control" name="fullname" v-model="db.fullname" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="px-boxDxInput">
                                                     <div class="row px-boxDxInput-container">
-                                                        <div class="col-md-12 px-boxDxInput-list" v-for="item in model.departments">
+                                                        <div class="col-md-12 px-boxDxInput-list" v-for="item in db.departments">
                                                             <div class="row">
                                                                 <div class="col-sm-6 col-xs-12">
                                                                     <div class="form-group">
                                                                         <label>Department</label>
-                                                                        <select class="select raw-select" name="department_list[]" v-bind:value="item.name" required>
+                                                                        <select class="select raw-select" name="department_list[]" v-model="item.name" required>
                                                                             <option value="" disabled>-- Select --</option>
                                                                             <option value="Board of Directors">Board of Directors</option>
                                                                             <option value="Independent Director">Independent Director</option>
-                                                                            <option value="Audit Committees">Audit Committee</option>
+                                                                            <option value="Audit Committee">Audit Committee</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-6 col-xs-12">
                                                                     <div class="form-group">
-                                                                        <label>Position </label>
+                                                                        <label>Position {{item.name}}</label>
                                                                         <span class="pull-right"><a type="button" class="btn-remove" data-toggle="modal" data-target="#action-Remove"><i class="icon-btn-remove"></i></a></span>
-                                                                        <input type="text" class="form-control"  name="position_list[]" v-bind:value="item.position" required>
+                                                                        <input type="text" class="form-control"  name="position_list[]" v-model="item.position" required>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -237,54 +237,56 @@
     </div>
     <!-- /page container -->
 <script>
+    
+    // Model //
+    var page_DATA = {
+            page:{
+                datetime: '',
+                fullname: '',
+                departments: [],
+                author: '',
+                authorId: ''
+            },
+            db:{
+                fullname: 'Mr. Tommy Taechaubol',
+                departments: [],
+            }
+        };
+    
     // Controller //
-   
     var app_MODULE = new Vue({
         el: '#appModule',
-        data: {
-            page:{
-                datetime: '2017-10-17 16:38:25',
-                fullname: 'Mr. Tommy Taechaubol',
-                departments: [{
-                    name: 'Board of Directors',
-                    position: 'Chairman of the Board of Directors, Chairman of Nomination and Remuneration Committee'
-                }, {
-                    name: 'Independent Director',
-                    position: 'Chairman of Nomination and Remuneration Committee'
-                }],
-                author: 'Noname',
-                refid: '1234'
-            },
-            model:{
-                fullname: 'Mr. Tommy Taechaubol',
-                departments: [{
-                    name: 'Board of Directors',
-                    position: 'Chairman of the Board of Directors, Chairman of Nomination and Remuneration Committee'
-                }, {
-                    name: 'Independent Director',
-                    position: 'Chairman of Nomination and Remuneration Committee'
-                }],
-            }
-        },
+        data: page_DATA,
         updated:function(){
             this.$nextTick(function () {
                 $(this.$el).find('.select').select2({
                     minimumResultsForSearch: "-1"
-                });
+                }).on('change',function(e){
+                    page_DATA
+                })
             });
+        },
+        watch:{
+            db: {
+                handler(val){
+                    console.log('chg : '+val)
+                },
+                deep:true
+            }
         },
         created: function() {
             var _loc = this;
             axios.get("dat/members-information.json")
                 .then(function(resp) {
+                    console.log('loaded')
                     _loc.page.fullname = resp.data.results.data.fullname;
                     _loc.page.departments = resp.data.results.data.departments;
                     _loc.page.datetime = _loc.showdate(resp.data.results.commits.datetime);
                     _loc.page.author = resp.data.results.commits.author;
-                    _loc.page.refid = resp.data.results.commits.author_id;
+                    _loc.page.authorId = resp.data.results.commits.author_id;
                     //
-                    _loc.model.fullname = resp.data.results.data.fullname;
-                    _loc.model.departments = resp.data.results.data.departments;
+                    _loc.db.fullname = JSON.parse(JSON.stringify(resp.data.results.data.fullname));
+                    _loc.db.departments =  JSON.parse(JSON.stringify(resp.data.results.data.departments));
                 })
         },
         methods: {
@@ -292,11 +294,12 @@
                 return moment(t, "YYYY-MM-DD HH:mm:ss").format("MMM D, YYYY [at] HH.MM a");
             },
             insertDepartment: function(evt){
-                this.model.departments.push({name:"x",position:"x"});
+                console.log(this.db.fullname);
+                this.db.departments.push({name:"",position:""});
             }
         }
     });
-    
+
 </script>
 <script>
     $(function() {
