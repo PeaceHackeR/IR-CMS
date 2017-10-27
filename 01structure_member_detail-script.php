@@ -86,7 +86,7 @@
                                     <h4 class="text-heading">Information</h4>
                                 </div>
                                 
-                                <div id="tp_information" class="fx-mode-view">
+                                <div class="fx-mode-view">
                                     <div class="panel panel-flat">
                                         <div class="panel-body">
                                             <div class="button-right top-topic">
@@ -114,32 +114,41 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p class="last-modified"><strong>Last Modified</strong> {{page.datetime}} - by <a v-bind:href="'#'+page.authorId">{{page.author}}</a></p>
+                                    <p class="last-modified"><strong>Last Modified</strong> {{ showFormatDate(page.datetime[1]) }} - by <a v-bind:href="'#'+page.authorId[1]">{{page.author[1]}}</a></p>
                                 </div>
                                 <div class="fx-mode-edit">
                                     <div class="panel panel-flat">
                                         <form class="px-formEdit" action="outputdata.php" method="post" target="_blank">
+                                            <input type="hidden" name="block_key" value="1">
                                             <div class="panel-body">
                                                 <div class="button-right top-topic">
                                                     <button type="button" class="btn btn-cancel">Cancel</button>
                                                     <button type="submit" class="btn btn-topic-save">Save</button>
                                                 </div>
+                                                
+                                                <template-fullname></template-fullname>
+                                                <script type="text/x-template" id="template_fullname">
                                                 <div class="row">
+
                                                     <div class="col-sm-6 col-xs-12">
                                                         <div class="form-group">
                                                             <label>Full Name</label>
-                                                            <input type="text" class="form-control" name="fullname" v-model="db.fullname" required>
+                                                            <input type="text" class="form-control" name="fullname" v-bind:value="fullname" required>
                                                         </div>
                                                     </div>
+                                                    
                                                 </div>
+                                                </script>
+                                                
+
                                                 <div class="px-boxDxInput">
                                                     <div class="row px-boxDxInput-container">
-                                                        <div class="col-md-12 px-boxDxInput-list" v-for="item in db.departments">
+                                                        <div class="col-md-12 px-boxDxInput-list" v-for="item in page.departments">
                                                             <div class="row">
                                                                 <div class="col-sm-6 col-xs-12">
                                                                     <div class="form-group">
                                                                         <label>Department</label>
-                                                                        <select class="select raw-select" name="department_list[]" v-model="item.name" required>
+                                                                        <select class="select raw-select" name="department_list[]" v-bind:value="item.name" required>
                                                                             <option value="" disabled>-- Select --</option>
                                                                             <option value="Board of Directors">Board of Directors</option>
                                                                             <option value="Independent Director">Independent Director</option>
@@ -149,9 +158,9 @@
                                                                 </div>
                                                                 <div class="col-sm-6 col-xs-12">
                                                                     <div class="form-group">
-                                                                        <label>Position {{item.name}}</label>
+                                                                        <label>Position {{ item.name }}</label>
                                                                         <span class="pull-right"><a type="button" class="btn-remove" data-toggle="modal" data-target="#action-Remove"><i class="icon-btn-remove"></i></a></span>
-                                                                        <input type="text" class="form-control"  name="position_list[]" v-model="item.position" required>
+                                                                        <input type="text" class="form-control"  name="position_list[]" v-bind:value="item.position" required>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -162,56 +171,111 @@
                                                     </div>
                                                 </div>
 
+                                                
                                             </div>
-                                            </form>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="content-group">
+                            
+                            <div class="content-group fx-mode">
                                 <div class="heading-topic">
                                     <h4 class="text-heading">Image</h4>
                                     <!-- App -->
                                     <?php include 'ssi/app-thai-img-view.php'; ?>
                                     <!-- /App -->
                                 </div>
-                                <div class="panel panel-flat">
-                                    <div class="panel-body">
-                                        <div class="button-right top-topic">
-                                            <button type="button" class="btn btn-view-edit">Edit</button>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>&nbsp;</label>
-                                            <p class="text-center"><img src="assets-cms/images/upload/img_300x300.jpg" class="img-responsive"></p>
+                                <div class="fx-mode-view">
+                                    <div class="panel panel-flat">
+                                        <div class="panel-body">
+                                            <div class="button-right top-topic">
+                                                <button type="button" class="btn btn-view-edit">Edit</button>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>&nbsp;</label>
+                                                <p class="text-center"><img v-bind:src="page.image" class="img-responsive"></p>
+                                            </div>
                                         </div>
                                     </div>
+                                    <p class="last-modified"><strong>Last Modified</strong> {{ showFormatDate(page.datetime[2]) }} - by <a v-bind:href="'#'+page.authorId[2]">{{ page.author[2] }}</a></p>
                                 </div>
-                                <p class="last-modified"><strong>Last Modified</strong> Aug 9, 2017 at 04.38 pm - by <a href="#">Admin</a></p>
+                                <div class="fx-mode-edit">
+                                    <div class="panel panel-flat">
+                                        <form class="px-formEdit" action="outputdata.php" method="post" target="_blank">
+                                            <input type="hidden" name="block_key" value="2">
+                                            <div class="panel-body">
+                                                <div class="button-right top-topic">
+                                                    <button type="button" class="btn btn-cancel">Cancel</button>
+                                                    <button type="submit" class="btn btn-topic-save">Save</button>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>&nbsp;</label>
+                                                    <div class="bc-img-browse">
+                                                        <div class="img"><img src="assets-cms/images/upload/board_300x300.jpg" class="img-responsive"></div>
+                                                        <div class="remove-img">
+                                                            <a class="btn btn-remove" data-toggle="modal" data-target="#action-Delete"><i class="icon-btn-remove"></i></a>
+                                                        </div>
+                                                        <div class="btn-group import-img">
+                                                            <a href="#" class="btn btn-library"><i class="icon-btn-library"></i></a>
+                                                            <a href="#" class="btn btn-computer" data-toggle="modal" data-target="#action-image43"><i class="icon-btn-computer"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <!-- App -->
+                                                    <?php include 'ssi/app-extension-image.php'; ?>
+                                                    <!-- /app -->
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="content-group">
+                            <div class="content-group fx-mode">
                                 <div class="heading-topic">
                                     <h4 class="text-heading">Profile</h4>
                                 </div>
-                                <div class="panel panel-flat">
-                                    <div class="panel-body">
-                                        <div class="button-right top-topic">
-                                            <button type="button" class="btn btn-view-edit">Edit</button>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>&nbsp;</label>
-                                            <p>Tommy Taechaubol holds a Bachelor’s Degree in Commerce (with merit) and a Bachelor’s Degree in Law from the University of New South Wales, Australia, and a MBA in Finance (with merit) from The Sasin Graduate Institute of Business Administration.</p>
-                                            <p>His career began at MFC Asset Management PCL (MFC) in the property department in 2010, moving on to become the head of the Business Development Division in 2012 overseeing the property, infrastructure and private equity departments. During his time at MFC, he was responsible for the establishment of 6 property funds raising a total of THB 11B of Investment capital. He was also was also responsible for overseeing a total of 26 funds with THB 32B under management and developed expertise in property and energy sectors. He was a member of the management committee where he focused on competitive strategy.</p>
-                                            <p>Tommy currently serves as CEO of Country Group Holdings PCL since the company’s restructure in 2015. He also sits as Director on the board of its subsidiaries including Country Group Securities PCL (2012) and Padang Industries PCL (2015). He maintains his active role at MFC as an advisor to the Executive Board (2014).</p>
-                                            <ul>
-                                                <li>2014 - Present Director of The Stock Exchange of Thailand</li>
-                                                <li>2014 - Present luminaries of Market for Alternative Investment – MAI</li>
-                                                <li>2014 - Present luminaries of Market for Alternative Investment – MAI</li>
-                                            </ul>
+                                <div class="fx-mode-view">
+                                    <div class="panel panel-flat">
+                                        <div class="panel-body">
+                                            <div class="button-right top-topic">
+                                                <button type="button" class="btn btn-view-edit">Edit</button>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>&nbsp;</label>
+                                                <div v-html="page.profile">
+                                                    <!-- HTML -->
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    <p class="last-modified"><strong>Last Modified</strong> {{ showFormatDate(page.datetime[3]) }} - by <a v-bind:href="'#'+page.authorId[3]">{{ page.author[3] }}</a></p>
                                 </div>
-                                <p class="last-modified"><strong>Last Modified</strong> Aug 9, 2017 at 04.38 pm - by <a href="#">Admin</a></p>
+                                <div class="fx-mode-edit">
+                                    <div class="panel panel-flat">
+                                        <form class="px-formEdit" action="outputdata.php" method="post" target="_blank">
+                                            <input type="hidden" name="block_key" value="3">
+                                            <div class="panel-body">
+                                                <div class="button-right top-topic">
+                                                    <button type="button" class="btn btn-cancel">Cancel</button>
+                                                    <button type="submit" class="btn btn-topic-save">Save</button>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>&nbsp;</label>
+                                                    <textarea class="form-control summernote-no-img" name="profile_html">
+<p>Tommy Taechaubol holds a Bachelor’s Degree in Commerce (with merit) and a Bachelor’s Degree in Law from the University of New South Wales, Australia, and a MBA in Finance (with merit) from The Sasin Graduate Institute of Business Administration.</p>
+<p>His career began at MFC Asset Management PCL (MFC) in the property department in 2010, moving on to become the head of the Business Development Division in 2012 overseeing the property, infrastructure and private equity departments. During his time at MFC, he was responsible for the establishment of 6 property funds raising a total of THB 11B of Investment capital. He was also was also responsible for overseeing a total of 26 funds with THB 32B under management and developed expertise in property and energy sectors. He was a member of the management committee where he focused on competitive strategy.</p>
+<p>Tommy currently serves as CEO of Country Group Holdings PCL since the company’s restructure in 2015. He also sits as Director on the board of its subsidiaries including Country Group Securities PCL (2012) and Padang Industries PCL (2015). He maintains his active role at MFC as an advisor to the Executive Board (2014).</p>
+<ul>
+    <li>2014 - Present Director of The Stock Exchange of Thailand</li>
+    <li>2014 - Present luminaries of Market for Alternative Investment – MAI</li>
+    <li>2014 - Present luminaries of Market for Alternative Investment – MAI</li>
+</ul>
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- App -->
@@ -242,18 +306,69 @@
     var page_DATA = {
             page:{
                 datetime: '',
-                fullname: '',
-                departments: [],
-                author: '',
-                authorId: ''
-            },
-            db:{
+                dept:'',
                 fullname: 'Mr. Tommy Taechaubol',
-                departments: [],
+                departments: [
+                    {
+                        "name": "Board of Directors",
+                        "position": "Chairman of the Board of Directors, Chairman of Nomination and Remuneration Committee"
+                    }, {
+                        "name": "Independent Director",
+                        "position": "Chairman of Nomination and Remuneration Committee"
+                    }
+                ],
+                image : 'assets-cms/images/upload/img_300x300.jpg',
+                profile: '<p>Tommy Taechaubol holds a Bachelor’s Degree in Commerce (with merit) and a Bachelor’s Degree in Law from the University of New South Wales, Australia, and a MBA in Finance (with merit) from The Sasin Graduate Institute of Business Administration.</p><p>His career began at MFC Asset Management PCL (MFC) in the property department in 2010, moving on to become the head of the Business Development Division in 2012 overseeing the property, infrastructure and private equity departments. During his time at MFC, he was responsible for the establishment of 6 property funds raising a total of THB 11B of Investment capital. He was also was also responsible for overseeing a total of 26 funds with THB 32B under management and developed expertise in property and energy sectors. He was a member of the management committee where he focused on competitive strategy.</p><p>Tommy currently serves as CEO of Country Group Holdings PCL since the company’s restructure in 2015. He also sits as Director on the board of its subsidiaries including Country Group Securities PCL (2012) and Padang Industries PCL (2015). He maintains his active role at MFC as an advisor to the Executive Board (2014).</p><ul><li>2014 - Present Director of The Stock Exchange of Thailand</li><li>2014 - Present luminaries of Market for Alternative Investment – MAI</li><li>2014 - Present luminaries of Market for Alternative Investment – MAI</li></ul>',
+                status: 'Yes',
+                publish_datetime : "2017-10-17 16:38:25",
+                publish_by : 'Admin',
+                publish_by_id : 18,
+                start_datetime : "2017-10-17 16:38:25",
+                end_datetime : "2017-10-17 16:38:25",
+                author: ["IR Admin","PM","Manager","Icweb"],
+                authorId: [100,101,102,103],
+                datetime: ["2017-10-17 16:38:25","2017-10-17 16:38:25","2017-10-17 16:38:25","2017-10-17 16:38:25"]
+            },
+            temp:{
             }
         };
     
     // Controller //
+    Vue.component('template-fullname', {
+        template: '#template_fullname',
+        data:function(){
+            return {
+                fullname: 'Akarate Pongsawang'
+//                departments: [
+//                    {
+//                        "name": "Board of Directors",
+//                        "position": "Chairman of the Board of Directors, Chairman of Nomination and Remuneration Committee"
+//                    }, {
+//                        "name": "Independent Director",
+//                        "position": "Chairman of Nomination and Remuneration Committee"
+//                    }
+//                ]
+            }
+      }
+    });
+//    Vue.component('template-departments', {
+//        template: '#template_departments',
+//        props: ['key'],
+//        data:function(){
+//            return {
+//                departments: [
+//                    {
+//                        "name": "Board of Directors",
+//                        "position": "Chairman of the Board of Directors, Chairman of Nomination and Remuneration Committee"
+//                    }, {
+//                        "name": "Independent Director",
+//                        "position": "Chairman of Nomination and Remuneration Committee"
+//                    }
+//                ]
+//            }
+//      }
+//    })
+    
     var app_MODULE = new Vue({
         el: '#appModule',
         data: page_DATA,
@@ -263,11 +378,11 @@
                     minimumResultsForSearch: "-1"
                 }).on('change',function(e){
                     page_DATA
-                })
+                });
             });
         },
         watch:{
-            db: {
+            temp: {
                 handler(val){
                     console.log('chg : '+val)
                 },
@@ -275,27 +390,26 @@
             }
         },
         created: function() {
-            var _loc = this;
-            axios.get("dat/members-information.json")
-                .then(function(resp) {
-                    console.log('loaded')
-                    _loc.page.fullname = resp.data.results.data.fullname;
-                    _loc.page.departments = resp.data.results.data.departments;
-                    _loc.page.datetime = _loc.showdate(resp.data.results.commits.datetime);
-                    _loc.page.author = resp.data.results.commits.author;
-                    _loc.page.authorId = resp.data.results.commits.author_id;
-                    //
-                    _loc.db.fullname = JSON.parse(JSON.stringify(resp.data.results.data.fullname));
-                    _loc.db.departments =  JSON.parse(JSON.stringify(resp.data.results.data.departments));
-                })
+//            var _loc = this;
+//            axios.get("dat/members-information.json")
+//                .then(function(resp) {
+//                    console.log('loaded')
+//                    _loc.page.fullname = resp.data.results.data.fullname;
+//                    _loc.page.departments = resp.data.results.data.departments;
+//                    _loc.page.datetime = _loc.showdate(resp.data.results.commits.datetime);
+//                    _loc.page.author = resp.data.results.commits.author;
+//                    _loc.page.authorId = resp.data.results.commits.author_id;
+//                    //
+////                    _loc.db.fullname = JSON.parse(JSON.stringify(resp.data.results.data.fullname));
+////                    _loc.db.departments =  JSON.parse(JSON.stringify(resp.data.results.data.departments));
+//                })
         },
         methods: {
-            showdate: function(t) {
+            showFormatDate: function(t) {
                 return moment(t, "YYYY-MM-DD HH:mm:ss").format("MMM D, YYYY [at] HH.MM a");
             },
             insertDepartment: function(evt){
-                console.log(this.db.fullname);
-                this.db.departments.push({name:"",position:""});
+                this.page.departments.push({name:"",position:""});
             }
         }
     });
